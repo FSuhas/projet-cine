@@ -1,2 +1,21 @@
-<%= render "shared/navbar" %>
-<div class="container"><h1>Pages#candidat</h1></div>
+<div style="margin-top: 20px; display: flex; justify-content: center;">
+  <% if user_signed_in? %>
+        <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-large" %>
+  <% else %>
+      <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+  <% end %>
+</div>
+<div class="container">
+  <p>Nom</p>
+  <p>Prénom</p>
+  <p>Bio</p>
+  <button>Info</button>
+  <button>Archive</button>
+  <button>Books</button>
+  <button>Size</button>
+</div>
+<div class="container" style="display: flex;justify-content: center;">
+  <%= link_to index_path do %>
+    <i class="fa-solid fa-clapperboard"></i>
+  <% end %>
+</div>
