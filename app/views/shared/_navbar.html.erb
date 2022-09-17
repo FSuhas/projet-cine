@@ -2,7 +2,7 @@
   <div class="container-fluid" style="justify-content: flex-end;">
     <div>
         <% if user_signed_in? %>
-            <%= link_to candidat_path, class: "navbar-brand" do %>
+            <%= link_to candidat_show_path(@user) do %>
               <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>
             <% end %>
         <% else %>
