@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :candidats
   devise_for :users
   root to: "pages#home"
 

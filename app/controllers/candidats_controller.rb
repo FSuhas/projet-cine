@@ -1,12 +1,15 @@
 class CandidatsController < ApplicationController
-  before_action :set_candidat, only: [:show]
+  before_action :set_candidat, only: [:update]
 
   def show
+    @candidat = Candidat.find(params[:id])
   end
 
   def update
+    @candidat = Candidat.find(params[:id])
     @candidat.update(params_create)
-    redirect_to candidat_show_path(@candidat.user_id)
+    # raise
+    redirect_to candidat_show_path(@candidat)
   end
 
 
@@ -14,10 +17,13 @@ class CandidatsController < ApplicationController
   private
 
   def set_candidat
-    @candidat = Candidat.new(user_id: params[:id], nom: "test", prenom: "test", date_de_naissance: "1990-01-01", adresse: "test", telephone: "test", bio: "test")
+    @candidat = Candidat.new(user_id: params[:id])
+    if @candidat.user_id == params[:id]
+      @candidat.save
+    end
   end
 
   def params_create
-    params.require('candidat/1').permit(:id ,:nom, :prenom, :date_de_naissance, :adresse, :telephone, :bio, :user_id)
+    params.require(:candidat).permit(:id, :nom, :prenom, :date_de_naissance, :adresse, :telephone, :bio, :user_id)
   end
 end
